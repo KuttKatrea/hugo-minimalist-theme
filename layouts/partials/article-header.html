@@ -3,7 +3,21 @@
 {{ else }}
 <h2><a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
 {{ end }}
-<footer class="post-info">{{ .Site.Data.l10n.article.posted_on }} <span class="post-meta"><time datetime="{{ .Date.Format "2006.01.02" }}">{{ .Date.Format "2006.01.02" }}</time>
+
+<footer class="post-info">
+
+{{ if isset .Params "sagas" }}
+  {{ if gt (len .Params.sagas) 0 }}{{ .Site.Data.l10n.article.belongs_to_saga }}
+    {{ range $i, $v := .Params.sagas }}
+    <a href="{{ $.Site.BaseURL }}sagas/{{ $v | urlize }}">{{ $v }}</a>{{ if ne (len $.Params.sagas) (add $i 1) }}, {{ end }}
+    {{ end }}
+    <br />
+  {{ end }}
+{{ end }}
+
+
+{{ .Site.Data.l10n.article.posted_on }} <span class="post-meta"><time datetime="{{ .Date.Format "2006.01.02" }}">{{ .Date.Format "2006.01.02" }}</time>
+
 {{ if isset .Params "tags" }}
     {{ if gt (len .Params.tags) 0 }}&middot; {{ .Site.Data.l10n.article.tagged_in }}
         {{ range $i, $v := .Params.tags }}
@@ -11,5 +25,6 @@
         {{ end }}
     {{ end }}
 {{ end }}
+
 </span>
 </footer>
