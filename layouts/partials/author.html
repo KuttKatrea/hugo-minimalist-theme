@@ -7,5 +7,15 @@
   <ul class="social">
     {{ partial "social" . }}
   </ul>
-  <br><br>
+  <br /><br />
+
+  <ul class="menu">
+    {{ range .Site.Menus.main }}
+      <li>
+        <a href="{{ .URL }}">
+          <span>{{ .Name }}</span>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
 </aside>

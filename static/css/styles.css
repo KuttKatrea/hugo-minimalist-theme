@@ -791,3 +791,11 @@ body.post-template .site-header h2 .logo {
 
 .clearfix:after {
   clear: both; }
+
+ul.menu {
+  padding: 0;
+}
+
+ul.menu li {
+  list-style-type: none;
+}

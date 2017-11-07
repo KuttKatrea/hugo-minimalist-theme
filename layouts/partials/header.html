@@ -42,15 +42,3 @@
               <h2>{{ .Site.Params.header_title }}</h2>
           </div>
         </header>
-
-        <div>
-          {{ $currentPage := . }}
-          {{ range .Site.Menus.main }}
-              <li>
-                <a href="{{.URL}}">
-                  <span>{{ .Name }}</span>
-                </a>
-              </li>
-          {{ end }}
-        </div>
-
